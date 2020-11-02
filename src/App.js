@@ -1,4 +1,4 @@
-import logo from './logo.svg';
+
 import React, {useState} from "react";
 import TeamForm from "./Form.js"
 import Team from "./Team.js"
@@ -6,7 +6,7 @@ import Data from "./data.js"
 import './App.css';
 
 function App() {
-const [teammates, setTeammates] = useState([Data]);
+const [teammates, setTeammates] = useState(Data);
 
 const deleteTeammate = (id)=>{
   const newTeammate = [...teammates];
@@ -14,15 +14,17 @@ const deleteTeammate = (id)=>{
   newTeammate.splice(indexOfTeammateToDelete,1);
   setTeammates(newTeammate)
 }
-const addNewTeammate = (teammates) => {
-  const newTeammate = {
+
+const addNewTeammate = (teammate) => {
+  const newTeammates = {
     id: Date.now (),
-    name: teammates.name,
-    email: teammates.email,
-    role: teammates.role,
+    name: teammate.name,
+    email: teammate.email,
+    role: teammate.role,
   }
-  setTeammates([newTeammate, ...teammates]);
+  setTeammates([newTeammates, ...teammates]);
 }
+console.log (teammates)
   return (
     <div className="App">
     <h1>My Dream Team</h1>
